@@ -109,17 +109,13 @@ python manage.py runserver
 Acesse:
 
 http://127.0.0.1:8000/api/schema/swagger-ui/
-
-ou:
-
-http://127.0.0.1:8000/swagger/
+ou http://127.0.0.1:8000/swagger/
 ⚙️ Instalação
-1. Clone o repositório
 git clone https://github.com/magnohr/API-de-Cadastro-de-Alunos-Professores-e-Classes.git
 cd school-api
-2. Crie ambiente virtual
+
 python -m venv .venv
-3. Ative o ambiente
+Ativar ambiente
 
 Windows
 
@@ -128,14 +124,14 @@ Windows
 Linux/Mac
 
 source .venv/bin/activate
-4. Instale dependências
+Instalar dependências
 pip install -r requirements.txt
-5. Execute migrations
+Migrar banco
 python manage.py makemigrations
 python manage.py migrate
-6. Crie usuário admin
+Criar usuário admin
 python manage.py createsuperuser
-7. Rode o servidor
+Rodar servidor
 python manage.py runserver
 🌐 URLs principais
 Admin → http://127.0.0.1:8000/admin/
@@ -144,23 +140,43 @@ Students → http://127.0.0.1:8000/api/students/
 Teachers → http://127.0.0.1:8000/api/teachers/
 Classes → http://127.0.0.1:8000/api/classes/
 🔐 Como usar JWT (PASSO A PASSO)
-1. Gere o token
-
-Faça POST em:
-
-/api/token/
-2. Copie o access token
-3. No Swagger clique em Authorize
-
-Cole no formato:
-
+Gere o token em /api/token/
+Copie o access
+Abra o Swagger
+Clique em Authorize
+Cole:
 Bearer SEU_TOKEN
-4. Teste os endpoints normalmente
+Teste os endpoints
+🔐 Swagger - Autorização detalhada
+1️⃣ Acesse o Swagger
+
+http://127.0.0.1:8000/api/schema/swagger-ui/
+
+2️⃣ Clique em Authorize
+3️⃣ Cole o token
+Bearer SEU_ACCESS_TOKEN
+4️⃣ Confirme (Authorize → Close)
+5️⃣ Teste endpoints
+Try it out
+Execute
+Retorno 200 OK
+⚠️ Erros comuns
+Problema	Solução
+Bearer duplicado	Use apenas 1 "Bearer"
+401 Unauthorized	Token expirado
+Swagger não libera	Reautorizar token
+Token inválido	Gerar novo em /api/token/
+🚀 Fluxo completo
+/api/token/
+Copiar access
+Swagger → Authorize
+Testar API
+Renovar com refresh se necessário
 📸 Demonstração
-Swagger UI funcionando
+Swagger UI
 Django Admin
 CRUD completo
-Autenticação JWT
+JWT funcionando
 🎯 Aprendizados
 Django REST Framework
 JWT Authentication
